@@ -11,13 +11,13 @@ describe "New promotions" do
 
   it "have a role rule" do
     visit "/admin/promotions/1/edit"
-    page.should have_content("Roles")
+    expect(page).to have_content("Roles")
   end
 
   it "have a checkbox per role" do
     @promo.promotion_rules = [RolesPromotionRule.new]
     visit "/admin/promotions/1/edit"
-    page.should have_content("admin")
+    expect(page).to have_content("admin")
   end
 
   it "have admin role checked" do
@@ -26,7 +26,7 @@ describe "New promotions" do
     @promo.promotion_rules = [rolerule]
     visit "/admin/promotions/1/edit"
     my_box = find("#role_list_#{@admin_role.id}")
-    my_box.should be_checked
+    expect(my_box).to be_checked
   end
 
   it "have nothing but admin role checked" do
@@ -35,7 +35,7 @@ describe "New promotions" do
     @promo.promotion_rules = [rolerule]
     visit "/admin/promotions/1/edit"
     my_box = find("#role_list_#{@role.id}")
-    my_box.should_not be_checked
+    expect(my_box).to_not be_checked
   end
 
   it "have both roles checked after a update" do
@@ -47,8 +47,8 @@ describe "New promotions" do
       click_button "Update"
     end
     my_box = find("#role_list_#{@admin_role.id}")
-    my_box.should be_checked
+    expect(my_box).to be_checked
     my_box = find("#role_list_#{@role.id}")
-    my_box.should be_checked
+    expect(my_box).to be_checked
   end
 end
