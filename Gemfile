@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Provides basic authentication functionality for testing parts of your engine
-gem 'spree', '~>2.3.4'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', :branch => '2-3-stable'
+gem 'spree', github: 'spree/spree', branch: 'master'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
 
 group :test do
   gem 'therubyracer', :platforms => :ruby
